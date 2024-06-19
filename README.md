@@ -4,6 +4,16 @@
 
 Bem-vindo ao **AI-Infra-Automation-Toolbox**! Este repositório contém uma vasta coleção de exemplos de scripts, templates e ferramentas para provisionamento de ambientes Docker, Kubernetes e Google Cloud, além de configurações de zona de aterrissagem (landzone setup) e outras automações. 📦🔧
 
+### 🖼️ Exemplos de Uso
+
+#### Gerando Configurações Terraform
+![Gerando Configurações Terraform](https://github.com/chaos4455/AI-Infra-Automation-Toolbox/raw/main/assets/py_zfVcFQso1g.png)
+*Utilizando um console interativo para especificar provedor e características do arquivo para geração automática de configurações Terraform, por exemplo, ArgoCD no Google Cloud com replicação.*
+
+#### Gerando Arquivos Docker Compose
+![Gerando Arquivos Docker Compose](https://github.com/chaos4455/AI-Infra-Automation-Toolbox/raw/main/assets/py_gTEuFtNHKM.png)
+*Prompt interativo para especificar nome, características e descrição para geração de arquivos YAML do Docker Compose.*
+
 ---
 
 ## 📜 Índice
