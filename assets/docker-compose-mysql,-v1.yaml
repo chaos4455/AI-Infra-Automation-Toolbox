@@ -1,0 +1,102 @@
+version: "3.8"
+
+services:
+
+  # MySQL Service
+  mysql:
+    image: "mysql:8.0.28-oracle"
+    container_name: "mysql"
+    hostname: "mysql"
+    env_file:
+      - ./mysql/env-vars.env
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    networks:
+      - internal
+
+  # Apache Web Server Service
+  apache:
+    image: "httpd:2.4"
+    container_name: "apache"
+    hostname: "apache"
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./apache/htdocs:/var/www/html
+    links:
+      - mysql:mysql
+    networks:
+      - internal
+
+  # Nginx Proxy Service
+  nginx_proxy:
+    image: "nginx:latest"
+    container_name: "nginx_proxy"
+    hostname: "nginx_proxy"
+    restart: always
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - ./nginx_proxy/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - apache
+    networks:
+      - internal
+      - external
+
+  # Load Balancing Service
+  haproxy:
+    image: "haproxy:2.6"
+    container_name: "haproxy"
+    hostname: "haproxy"
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    depends_on:
+      - apache
+      - nginx_proxy
+    networks:
+      - internal
+      - external
+
+  # Grafana Monitoring Service
+  grafana:
+    image: "grafana/grafana:latest"
+    container_name: "grafana"
+    hostname: "grafana"
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    networks:
+      - internal
+
+  # Prometheus Monitoring Service
+  prometheus:
+    image: "prom/prometheus:latest"
+    container_name: "prometheus"
+    hostname: "prometheus"
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/data:/prometheus
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
+  external:
+    driver: bridge

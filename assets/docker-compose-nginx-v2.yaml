@@ -1,0 +1,175 @@
+version: "3.9"
+
+services:
+
+  nginx-master:
+    image: "nginx:latest"
+    container_name: "nginx-master"
+    network_mode: "bridge"
+    ports:
+      - "80:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/nginx.conf"
+    depends_on:
+      - "nginx-slave1"
+      - "nginx-slave2"
+      - "nginx-slave3"
+      - "nginx-slave4"
+      - "nginx-slave5"
+      - "nginx-slave6"
+      - "nginx-slave7"
+      - "nginx-slave8"
+      - "nginx-slave9"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  nginx-slave1:
+    image: "nginx:latest"
+    container_name: "nginx-slave1"
+    network_mode: "bridge"
+    ports:
+      - "8081:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/nginx.conf"
+    depends_on:
+      - "nginx-master"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  nginx-slave2:
+    image: "nginx:latest"
+    container_name: "nginx-slave2"
+    network_mode: "bridge"
+    ports:
+      - "8082:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/nginx.conf"
+    depends_on:
+      - "nginx-master"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  nginx-slave3:
+    image: "nginx:latest"
+    container_name: "nginx-slave3"
+    network_mode: "bridge"
+    ports:
+      - "8083:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/nginx.conf"
+    depends_on:
+      - "nginx-master"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  nginx-slave4:
+    image: "nginx:latest"
+    container_name: "nginx-slave4"
+    network_mode: "bridge"
+    ports:
+      - "8084:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/nginx.conf"
+    depends_on:
+      - "nginx-master"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  nginx-slave5:
+    image: "nginx:latest"
+    container_name: "nginx-slave5"
+    network_mode: "bridge"
+    ports:
+      - "8085:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/nginx.conf"
+    depends_on:
+      - "nginx-master"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  nginx-slave6:
+    image: "nginx:latest"
+    container_name: "nginx-slave6"
+    network_mode: "bridge"
+    ports:
+      - "8086:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/nginx.conf"
+    depends_on:
+      - "nginx-master"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  nginx-slave7:
+    image: "nginx:latest"
+    container_name: "nginx-slave7"
+    network_mode: "bridge"
+    ports:
+      - "8087:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/nginx.conf"
+    depends_on:
+      - "nginx-master"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  nginx-slave8:
+    image: "nginx:latest"
+    container_name: "nginx-slave8"
+    network_mode: "bridge"
+    ports:
+      - "8088:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/nginx.conf"
+    depends_on:
+      - "nginx-master"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  nginx-slave9:
+    image: "nginx:latest"
+    container_name: "nginx-slave9"
+    network_mode: "bridge"
+    ports:
+      - "8089:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/nginx.conf"
+    depends_on:
+      - "nginx-master"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+networks:
+  default:
+    name: "nginx-network"

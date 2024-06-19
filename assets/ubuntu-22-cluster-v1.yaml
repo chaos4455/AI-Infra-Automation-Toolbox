@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ubuntu22-cluster-service
+  namespace: default
+  labels:
+    app: ubuntu22-cluster-app
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8080
+    name: http
+  selector:
+    app: ubuntu22-cluster-app
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu22-cluster-pod
+  namespace: default
+  labels:
+    app: ubuntu22-cluster-app
+spec:
+  containers:
+  - name: ubuntu22-cluster-app
+    image: ubuntu:22.04
+    ports:
+    - containerPort: 8080
+    volumeMounts:
+    - name: data
+      mountPath: /data
+  volumes:
+  - name: data
+    emptyDir: {}
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ubuntu22-cluster-pv
+  namespace: default
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  hostPath:
+    path: /data

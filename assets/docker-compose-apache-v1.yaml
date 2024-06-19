@@ -1,0 +1,33 @@
+```yaml
+version: "3.9"
+
+services:
+  apache:
+    image: "httpd:latest"
+    container_name: "webserver"
+    hostname: "webserver"
+    networks:
+      - frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./html:/var/www/html"
+    environment:
+      - VIRTUAL_HOST=example.com
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.webserver-http.rule=Host(\`example.com\`, \`www.example.com\`)"
+      - "traefik.http.routers.webserver-http.entrypoints=web"
+      - "traefik.http.routers.webserver-http.tls=true"
+      - "traefik.http.routers.webserver-http.tls.certresolver=myresolver"
+    deploy:
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == manager
+
+networks:
+  frontend:
+    external: true
+```

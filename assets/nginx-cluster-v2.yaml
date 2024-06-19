@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-cluster
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: nginx-cluster
+  name: nginx-cluster
+spec:
+  selector:
+    app: nginx
+    tier: web
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: nginx-cluster
+  name: nginx-cluster
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: nginx
+        tier: web
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.21
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html-volume
+        secret:
+          secretName: nginx-secret
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: nginx-cluster
+  name: nginx-secret
+data:
+  index.html: PGh0bWw+CiAgPGhlYWQ+CiAgICA8dGl0bGU+V2VsY29tZSB0byBTaG9wcGluZyBEb3duIQ==</title>CiAgPC9oZWFkPgogIDxib2R5PgogICAg<h1>V2VsY29tZSB0byBTaG9wcGluZyBEb3duIQ==</h1>CiAgICA8cCBjYWxzcz0="dW5kZXJzY29yZSI+U3VwcG9ydGVkIGJ5IFN0ZWYgb24gS2Jlcm5ldGVzPC9wPgogIDwvYm9keT4KPC9odG1sPg==

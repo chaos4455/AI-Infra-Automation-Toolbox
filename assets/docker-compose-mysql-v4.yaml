@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    networks:
+      - db-net
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: example
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin -u root -p\"${MYSQL_ROOT_PASSWORD}\" ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    deploy:
+      mode: replicated
+      replicas: 1
+
+volumes:
+  mysql-data: {}
+
+networks:
+  db-net:
+    driver: bridge

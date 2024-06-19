@@ -1,0 +1,28 @@
+```yaml
+# Define a rede personalizada do Docker para os contêineres
+networks:
+  db_network:
+    driver: bridge
+
+# Define o serviço do MySQL
+services:
+  mysql:
+    image: mysql:8.0.30
+    container_name: mysql-db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=my-secret-password
+      - MYSQL_DATABASE=my-database
+      - MYSQL_USER=my-user
+      - MYSQL_PASSWORD=my-password
+    ports:
+      - 3306:3306
+    volumes:
+      - my-db-data:/var/lib/mysql
+    networks:
+      - db_network
+
+# Define o volume de dados do MySQL
+volumes:
+  my-db-data:
+```

@@ -1,0 +1,61 @@
+version: '3.7'
+
+services:
+
+  ## MYSQL NODE 1
+  mds-1:
+    image: mysql:8.0
+    container_name: mds-1
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./docker-entrypoints/mysql:/docker-entrypoint-initdb.d
+    ports:
+      - "33060:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=dev
+      - MYSQL_USER=devuser
+      - MYSQL_PASSWORD=devpassword
+    networks:
+      - mysql-voting-net
+
+  ## MYSQL NODE 2
+  mds-2:
+    image: mysql:8.0
+    container_name: mds-2
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./docker-entrypoints/mysql:/docker-entrypoint-initdb.d
+    ports:
+      - "33061:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=dev
+      - MYSQL_USER=devuser
+      - MYSQL_PASSWORD=devpassword
+    networks:
+      - mysql-voting-net
+
+  ## MYSQL NODE 3
+  mds-3:
+    image: mysql:8.0
+    container_name: mds-3
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./docker-entrypoints/mysql:/docker-entrypoint-initdb.d
+    ports:
+      - "33062:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=dev
+      - MYSQL_USER=devuser
+      - MYSQL_PASSWORD=devpassword
+    networks:
+      - mysql-voting-net
+
+networks:
+  mysql-voting-net:
+    driver: bridge

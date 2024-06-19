@@ -1,0 +1,55 @@
+version: "3.9"
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+services:
+  node-app:
+    image: node:16-apache-mysql-nginx
+    restart: always
+    volumes:
+      - './:/usr/src/app'
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+      - nginx
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_HOST=mysql
+      - MYSQL_DB=nodedb
+    networks:
+      - frontend
+      - backend
+
+  nginx:
+    image: nginx:1.21.6-alpine
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - node-app
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - frontend
+
+  mysql:
+    image: mysql:8.0.32
+    restart: always
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=nodedb
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - backend
+  
+volumes:
+  mysql-data:
+    driver: local

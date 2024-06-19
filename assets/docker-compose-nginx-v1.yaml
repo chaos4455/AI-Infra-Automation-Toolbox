@@ -1,0 +1,21 @@
+```yaml
+version: '3.7'
+
+services:
+  nginx:
+    image: nginx:1.19-alpine
+    container_name: nginx
+    networks:
+      - web-tier
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app
+
+networks:
+  web-tier:
+    driver: bridge
+```

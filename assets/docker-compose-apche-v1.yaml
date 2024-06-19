@@ -1,0 +1,54 @@
+# Versão do Docker Compose
+version: '3.8'
+
+# Serviços
+services:
+  # Serviço Apache
+  apache:
+    # Imagem do Apache
+    image: httpd:2.4
+
+    # Redes
+    networks:
+      - web-network  # Rede customizada para comunicação entre contêineres
+
+    # Configurações de porta
+    ports:
+      - "80:80"  # Porta HTTP exposta para o host
+      - "443:443"  # Porta HTTPS exposta para o host
+
+    # Autenticação
+    secrets:
+      - source: apache-htpasswd
+        target: /etc/httpd/htpasswd
+
+    # Volumes
+    volumes:
+      - ./html:/var/www/html  # Compartilha o diretório html do host com o contêiner
+
+    # Grupo e nome do contêiner
+    container_name: apache-cluster
+    group: apache-group
+
+    # Replicas
+    replicas: 3  # Executa três instâncias do contêiner
+
+    # Modo de implantação como serviço
+    deploy:
+      mode: replicated
+      resources:
+        limits:
+          memory: 512Mi
+          cpu: 500m
+      restart_policy:
+        condition: on-failure
+
+# Redes
+networks:
+  web-network:
+    driver: bridge  # Cria uma rede de ponte para comunicação entre contêineres
+
+# Segredos
+secrets:
+  apache-htpasswd:
+    file: ./secrets/htpasswd

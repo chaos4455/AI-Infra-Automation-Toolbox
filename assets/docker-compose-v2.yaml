@@ -1,0 +1,26 @@
+```yaml
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0.30
+    networks:
+      - default
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "strong-password"
+      MYSQL_DATABASE: "mydb"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "user-password"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+
+volumes:
+  mysql-data:
+    
+networks:
+  default:
+    external: true
+```

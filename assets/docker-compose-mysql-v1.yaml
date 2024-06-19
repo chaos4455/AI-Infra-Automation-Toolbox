@@ -1,0 +1,21 @@
+```yaml
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - ./sql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: example
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    networks:
+      - mysql-net
+
+networks:
+  mysql-net:
+```

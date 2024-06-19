@@ -1,0 +1,52 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql:latest
+    container_name: apache_db
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pass
+    networks:
+      - apache-network
+
+  wordpress:
+    image: wordpress:latest
+    container_name: apache_wordpress
+    volumes:
+      - wp-data:/var/www/html
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=user
+      - WORDPRESS_DB_PASSWORD=pass
+      - WORDPRESS_DB_NAME=wordpress
+    depends_on:
+      - db
+    networks:
+      - apache-network
+
+  apache:
+    image: httpd:latest
+    container_name: apache_web
+    volumes:
+      - wp-data:/var/www/html
+    ports:
+      - "80:80"
+    networks:
+      - apache-network
+    depends_on:
+      - wordpress
+
+volumes:
+  db-data:
+    name: apache_db_data
+
+  wp-data:
+    name: apache_wp_data
+
+networks:
+  apache-network:

@@ -1,0 +1,43 @@
+```yaml
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0.29
+    container_name: mysql-db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=db_name
+      - MYSQL_USER=db_user
+      - MYSQL_PASSWORD=db_password
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - db-network
+
+  app:
+    image: my-app-image
+    container_name: my-app
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=db_name
+      - DB_USER=db_user
+      - DB_PASSWORD=db_password
+    networks:
+      - db-network
+
+networks:
+  db-network:
+    name: db-network
+    driver: bridge
+
+volumes:
+  db-data:
+    name: db-data
+    driver: local
+```
