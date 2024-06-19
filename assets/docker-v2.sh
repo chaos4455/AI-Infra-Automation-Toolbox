@@ -1,4 +1,3 @@
-```shell
 #!/bin/bash
 # Este script configura o serviço 'docker' para o projeto 'dockerprune'.
 
