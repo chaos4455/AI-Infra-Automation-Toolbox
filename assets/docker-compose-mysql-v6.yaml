@@ -1,6 +1,3 @@
-Claro, aqui está um arquivo Docker Compose atualizado para o serviço 'mysql' no projeto 'mysql-cluster' que incorpora as configurações fornecidas:
-
-```yaml
 version: '3.8'
 
 services:
@@ -31,14 +28,3 @@ services:
         condition: on-failure
         delay: 10s
         max_attempts: 3
-```
-
-Aqui está uma explicação das configurações adicionais:
-
-* **Deploy de imagem:** A imagem `mysql:8.0` é usada para o serviço `mysql`.
-* **Deploy de sistema operacional:** Nenhum sistema operacional específico é especificado, portanto, o Docker usará a imagem padrão para o sistema operacional host.
-* **Execução de comandos adicionais:** Nenhum comando adicional é especificado para ser executado.
-
-Observe que as configurações de cluster avançadas, como réplicas, balanceamento de carga e failover, são gerenciadas pelo software MySQL Cluster e não são configuradas diretamente no arquivo Docker Compose.
-
-Espero que isso ajude!
