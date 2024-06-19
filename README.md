@@ -2,9 +2,9 @@
 
 ### 🌐 [English README](https://github.com/chaos4455/AI-Infra-Automation-Toolbox/blob/main/english.md) | Explore this portfólio and all another resources in English.
 
-Bem-vindo ao **AI-Infra-Automation-Toolbox**! Este repositório contém uma vasta coleção de exemplos de scripts, templates e ferramentas para provisionamento de ambientes Docker, Kubernetes e Google Cloud, além de configurações de zona de aterrissagem (landzone setup) e outras automações, geradas por inteligencia artificial. 📦🔧
+Bem-vindo ao **AI-Infra-Automation-Toolbox**! Este repositório contém uma vasta coleção de exemplos de scripts, templates e ferramentas para provisionamento de ambientes Docker, Kubernetes e Google Cloud, além de configurações de zona de aterrissagem (landzone setup) e outras automações de exemplo, geradas por inteligencia artificial. 📦🔧
 
-Como profissional de infraestrutura e DevOps, utilizei a AI-Infra-Automation-Toolbox para automatizar o processo de configuração de infraestrutura como código usando Terraform. Aqui está uma análise detalhada da lógica por trás do diagrama:
+Como profissional de infraestrutura e DevOps, crieie utilizo a AI-Infra-Automation-Toolbox para automatizar o processo de configuração de infraestrutura como código usando Terraform. Utilize essa automação locamente ou configure via github actions ou outro método de deploy e code execution para gear templates pré operacionais para seus projetos de provisionamento usando inteligência artificial.
 
 - **Interação com o Usuário (Inquirer):** Utilizo a biblioteca `inquirer` em Python para criar prompts interativos, permitindo que o usuário selecione o provedor de nuvem (AWS, Azure, Google Cloud, ou outros) e defina características específicas desejadas para a infraestrutura, como alta disponibilidade, escalabilidade automática e gerenciamento de identidade.
 
