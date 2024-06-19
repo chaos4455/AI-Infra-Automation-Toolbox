@@ -103,6 +103,7 @@ spec:
       nodePort: 30080  # Porta no nó do Kubernetes através da qual o serviço será acessível externamente. Qualquer tráfego recebido na porta 30080 de um nó será encaminhado para o serviço na porta 80.
 ```
 
+```tf
 # Arquivo: mysql-cluster.tf
 
 # Recurso para criar o cluster Kubernetes no GCP
@@ -236,7 +237,7 @@ resource "google_service_networking_service" "mysql-service" {
     app = "mysql-cluster"  # Seletor para identificação dos serviços
   }
 }
-
+```
 
 ## 📁 Projetos Destacados
 
