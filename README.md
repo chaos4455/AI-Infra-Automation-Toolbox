@@ -83,7 +83,25 @@ A estrutura completa do repositório será detalhada após a inclusão dos arqui
 
 Bem-vindo ao meu portfolio de automação de infraestrutura! Aqui você encontrará uma coleção de ferramentas e scripts desenvolvidos para facilitar o provisionamento e a automação de ambientes complexos de TI. Meu objetivo é oferecer soluções eficientes e escaláveis utilizando as mais recentes tecnologias.
 
----
+### Exemplo de Serviço e Deployment Kubernetes para Nginx Cluster
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-cluster-svc
+  namespace: default
+  labels:
+    app: nginx-cluster
+spec:
+  type: NodePort  # Define o tipo de serviço como NodePort, permitindo que o serviço seja acessível em cada nó do cluster Kubernetes.
+  selector:
+    app: nginx-cluster  # Seleciona os pods que este serviço irá direcionar o tráfego, baseado no label 'app: nginx-cluster'.
+  ports:
+    - port: 80  # Porta exposta pelo serviço. O serviço estará disponível na porta 80 dentro do cluster Kubernetes.
+      targetPort: 80  # Porta no pod que será acessada pelo serviço. Neste caso, o Nginx dentro do pod está configurado para escutar na porta 80.
+      nodePort: 30080  # Porta no nó do Kubernetes através da qual o serviço será acessível externamente. Qualquer tráfego recebido na porta 30080 de um nó será encaminhado para o serviço na porta 80.
+```
 
 ## 📁 Projetos Destacados
 
