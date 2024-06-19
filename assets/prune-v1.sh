@@ -1,4 +1,3 @@
-```shell
 #!/bin/bash
 
 # Instalação de pacotes e configuração inicial
