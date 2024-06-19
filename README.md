@@ -103,6 +103,141 @@ spec:
       nodePort: 30080  # Porta no nó do Kubernetes através da qual o serviço será acessível externamente. Qualquer tráfego recebido na porta 30080 de um nó será encaminhado para o serviço na porta 80.
 ```
 
+# Arquivo: mysql-cluster.tf
+
+# Recurso para criar o cluster Kubernetes no GCP
+resource "google_container_cluster" "mysql-cluster" {
+  name        = "mysql-cluster"
+  location    = "us-central1"
+
+  # Configuração do pool de nós dentro do cluster MySQL
+  node_pools = [
+    {
+      name         = "default-pool"
+      node_count   = 3  # Define o número inicial de nós no pool
+      machine_type = "n1-standard-1"  # Tipo de máquina para os nós
+      os_image     = "ubuntu"  # Imagem do sistema operacional para os nós
+      autoscaling  = {
+        min_node_count = 1  # Número mínimo de nós no pool
+        max_node_count = 5  # Número máximo de nós no pool
+      }
+    }
+  ]
+
+  control_plane = {
+    version = "1.19.2-gke.1900"  # Versão do plano de controle do Kubernetes
+    # Consulte a documentação do GKE para personalizar a imagem do pool de controle, se necessário.
+    # https://cloud.google.com/kubernetes-engine/docs/concepts/node-images
+    # image = "gke-gcr-io/gke-control-plane-v1.19.2-gke.1900"
+  }
+
+  legacy_abac = {
+    enabled = false  # Desabilita o ABAC legado para o cluster
+  }
+
+  network_config = {
+    pod_range = "10.244.0.0/14"  # Faixa de IPs para os pods dentro do cluster
+  }
+}
+
+# Recurso para criar o node pool no cluster MySQL
+resource "google_container_node_pool" "mysql-cluster-pool" {
+  name         = "mysql-cluster-pool"
+  location     = "us-central1"
+  cluster      = google_container_cluster.mysql-cluster.name
+  node_version = "1.19.2-gke.1900"  # Versão do Kubernetes nos nós do pool
+  node_count   = 1  # Número de nós no pool
+  # Consulte a documentação do GKE para personalizar a imagem do pool de controle, se necessário.
+  # https://cloud.google.com/kubernetes-engine/docs/concepts/node-images
+  # image = "gke-gcr-io/gke-nodepool-v1.19.2-gke.1900"
+  autoscaling = {
+    min_node_count = 1  # Número mínimo de nós no pool
+    max_node_count = 3  # Número máximo de nós no pool
+  }
+}
+
+# Recurso para criar uma conta de serviço no GCP para operações do cluster MySQL
+resource "google_service_account" "mysql-cluster-sa" {
+  name        = "mysql-cluster-sa"
+  display_name = "Service account for MySQL cluster operations"
+}
+
+# Recurso para gerar a chave da conta de serviço para o cluster MySQL
+resource "google_service_account_key" "mysql-cluster-sa-key" {
+  service_account_id = google_service_account.mysql-cluster-sa.id
+  key_algorithm      = "RSA_4096"  # Algoritmo de chave para a conta de serviço
+  # Salve a chave JSON gerada por este recurso em um local seguro
+  # para uso posterior na criação do cluster MySQL.
+  private_key_type = "GOOGLE_CREDENTIALS_FILE"
+}
+
+# Recurso para criar a instância principal do MySQL no GCP
+resource "google_cloud_sql_instance" "mysql-primary" {
+  name             = "mysql-primary"
+  database_version = "MYSQL_8_0"  # Versão do MySQL para a instância
+  backend_type     = "SECOND_GEN"  # Tipo de backend da instância
+  machine_type     = "db-n1-standard-2"  # Tipo de máquina para a instância
+  activation_policy = "ALWAYS"  # Política de ativação da instância
+  # Altere o root_password para uma senha forte e segura.
+  root_password = "YOUR_STRONG_PASSWORD_HERE"
+  hbr_enabled      = true  # Habilita o backup contínuo
+}
+
+# Recurso para criar a réplica do MySQL no GCP
+resource "google_cloud_sql_instance" "mysql-replica" {
+  name             = "mysql-replica"
+  database_version = "MYSQL_8_0"  # Versão do MySQL para a instância réplica
+  backend_type     = "SECOND_GEN"  # Tipo de backend da instância réplica
+  machine_type     = "db-n1-standard-2"  # Tipo de máquina para a instância réplica
+  activation_policy = "ALWAYS"  # Política de ativação da instância réplica
+  # Altere o root_password para uma senha forte e segura.
+  root_password = "YOUR_STRONG_PASSWORD_HERE"
+  failover_replica  = {
+    automatic = {
+      seconds = 300  # Tempo em segundos para a réplica automática
+    }
+  }
+  replica_configuration = {
+    source_instance = google_cloud_sql_instance.mysql-primary.name  # Instância de origem para a réplica
+    failover  = {
+      automatic = {
+        failover_timeout = "5s"  # Tempo limite para failover automático
+      }
+    }
+  }
+}
+
+# Recurso para criar um firewall para permitir acesso ao MySQL a partir dos pods do cluster
+resource "google_compute_firewall" "mysql-cluster-firewall" {
+  name          = "mysql-cluster-firewall"
+  network       = "default"
+  target_tags   = ["mysql-cluster"]
+  allow {
+    protocol = "tcp"  # Protocolo TCP para as regras de firewall
+    ports    = ["3306"]  # Porta MySQL
+    sources  = ["10.0.0.0/8"]  # Intervalo de IP para permitir acesso
+  }
+}
+
+# Recurso para adicionar um rótulo aos pods do cluster MySQL para identificação pelo firewall
+resource "google_container_cluster_resource_label" "mysql-cluster-label" {
+  cluster_id = google_container_cluster.mysql-cluster.id
+  resource_labels = {
+    "app" = "mysql-cluster"  # Rótulo aplicado aos pods
+  }
+}
+
+# Recurso para expor serviços para acesso externo ao MySQL
+resource "google_service_networking_service" "mysql-service" {
+  name      = "mysql"
+  network   = "default"
+  ports     = ["3306"]  # Porta MySQL exposta externamente
+  selector {
+    app = "mysql-cluster"  # Seletor para identificação dos serviços
+  }
+}
+
+
 ## 📁 Projetos Destacados
 
 ### 1. **Apache Cluster com Terraform**
