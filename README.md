@@ -1,6 +1,6 @@
 # 🚀 AI-Infra-Automation-Toolbox 💡
 
-Bem-vindo ao **AI-Infra-Automation-Toolbox**! Este repositório contém uma vasta coleção de scripts, templates e ferramentas para provisionamento de ambientes Docker, Kubernetes e Google Cloud, além de configurações de zona de aterrissagem (landzone setup) e outras automações. 📦🔧
+Bem-vindo ao **AI-Infra-Automation-Toolbox**! Este repositório contém uma vasta coleção de exemplos de scripts, templates e ferramentas para provisionamento de ambientes Docker, Kubernetes e Google Cloud, além de configurações de zona de aterrissagem (landzone setup) e outras automações. 📦🔧
 
 ---
 
