@@ -16,26 +16,6 @@ Bem-vindo ao **AI-Infra-Automation-Toolbox**! Este repositório contém uma vast
 
 ---
 
-## 📜 Índice
-
-- [📚 Visão Geral](#-visão-geral)
-- [🏗️ Estrutura do Repositório](#️-estrutura-do-repositório)
-- [🚀 Tecnologias Utilizadas](#-tecnologias-utilizadas)
-- [🔧 Configuração e Uso](#-configuração-e-uso)
-- [🧰 Ferramentas e Automação](#-ferramentas-e-automação)
-- [📂 Detalhes dos Arquivos YAML](#-detalhes-dos-arquivos-yaml)
-  - [🐳 Deploys Docker](#-deploys-docker)
-  - [☸️ Deploys Kubernetes Simples](#-deploys-kubernetes-simples)
-  - [🌐 Deploys Kubernetes Complexos](#-deploys-kubernetes-complexos)
-- [📊 Diagramas e Referências](#-diagramas-e-referências)
-- [🌐 Referências e Recursos](#-referências-e-recursos)
-- [👥 Contribuições](#-contribuições)
-- [📞 Suporte](#-suporte)
-- [📜 Licença MIT](#-licença-mit)
-
-
----
-
 ## 📚 Visão Geral
 
 O **AI-Infra-Automation-Toolbox** foi criado para facilitar o provisionamento e a automação de ambientes complexos utilizando Docker, Kubernetes e Google Cloud. Aqui você encontrará:
