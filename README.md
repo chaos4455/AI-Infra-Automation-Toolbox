@@ -81,18 +81,6 @@ Utilize o AI-Infra-Automation-Toolbox para configurar desde ambientes de desenvo
 Se você busca otimizar suas operações de TI e escalar suas infraestruturas de forma eficiente, o AI-Infra-Automation-Toolbox é a escolha ideal. Explore nosso repositório para descobrir como podemos ajudar a transformar sua infraestrutura de TI.
 
 ---
-
-## 🏗️ Estrutura do Repositório
-
-A estrutura completa do repositório será detalhada após a inclusão dos arquivos YAML. Abaixo está uma visão geral das categorias de arquivos que serão incluídos:
-
-
-# Elias Andrade - Portfolio de Automação de Infraestrutura
-
-## 🚀 Introdução
-
-Bem-vindo ao meu portfolio de automação de infraestrutura! Aqui você encontrará uma coleção de ferramentas e scripts desenvolvidos para facilitar o provisionamento e a automação de ambientes complexos de TI. Meu objetivo é oferecer soluções eficientes e escaláveis utilizando as mais recentes tecnologias.
-
 ### Exemplo de Serviço e Deployment Kubernetes para Nginx Cluster
 
 ```yaml
