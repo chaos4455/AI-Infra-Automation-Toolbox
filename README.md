@@ -4,6 +4,14 @@
 
 Bem-vindo ao **AI-Infra-Automation-Toolbox**! Este repositório contém uma vasta coleção de exemplos de scripts, templates e ferramentas para provisionamento de ambientes Docker, Kubernetes e Google Cloud, além de configurações de zona de aterrissagem (landzone setup) e outras automações, geradas por inteligencia artificial. 📦🔧
 
+Como profissional de infraestrutura e DevOps, utilizei a AI-Infra-Automation-Toolbox para automatizar o processo de configuração de infraestrutura como código usando Terraform. Aqui está uma análise detalhada da lógica por trás do diagrama:
+
+- **Interação com o Usuário (Inquirer):** Utilizo a biblioteca `inquirer` em Python para criar prompts interativos, permitindo que o usuário selecione o provedor de nuvem (AWS, Azure, Google Cloud, ou outros) e defina características específicas desejadas para a infraestrutura, como alta disponibilidade, escalabilidade automática e gerenciamento de identidade.
+
+- **Geração de Conteúdo com IA (Google Cloud API):** Para gerar configurações detalhadas em arquivos `.tf` do Terraform, integro a aplicação com a API de linguagem generativa do Google Cloud. Envio prompts estruturados à API para obter respostas que são interpretadas e transformadas em configurações de infraestrutura detalhadas, incluindo recursos específicos de cada provedor de nuvem.
+
+- **Criação de Arquivos .tf do Terraform:** Após receber o conteúdo gerado pela IA, o processo automatizado cria arquivos `.tf` estruturados e organizados no diretório específico (`deploy/terraform`). Cada arquivo é nomeado de forma única e incrementada para evitar conflitos, seguindo as melhores práticas de gerenciamento de configuração.
+- 
 ### 🖼️ Exemplos de Uso
 
 #### Gerando Configurações Terraform
@@ -68,16 +76,6 @@ O objetivo é transformar este projeto em um recurso abrangente para aprendizado
 ## Diagrama da Lógica da Aplicação AI-Infra-Automation-Toolbox
 
 ![Diagrama da Lógica da Aplicação](https://github.com/chaos4455/AI-Infra-Automation-Toolbox/blob/main/diagram-export-18-06-2024-22_45_36.png)
-
-### Comentários Detalhados sobre o Diagrama
-
-Como profissional de infraestrutura e DevOps, utilizei a AI-Infra-Automation-Toolbox para automatizar o processo de configuração de infraestrutura como código usando Terraform. Aqui está uma análise detalhada da lógica por trás do diagrama:
-
-- **Interação com o Usuário (Inquirer):** Utilizo a biblioteca `inquirer` em Python para criar prompts interativos, permitindo que o usuário selecione o provedor de nuvem (AWS, Azure, Google Cloud, ou outros) e defina características específicas desejadas para a infraestrutura, como alta disponibilidade, escalabilidade automática e gerenciamento de identidade.
-
-- **Geração de Conteúdo com IA (Google Cloud API):** Para gerar configurações detalhadas em arquivos `.tf` do Terraform, integro a aplicação com a API de linguagem generativa do Google Cloud. Envio prompts estruturados à API para obter respostas que são interpretadas e transformadas em configurações de infraestrutura detalhadas, incluindo recursos específicos de cada provedor de nuvem.
-
-- **Criação de Arquivos .tf do Terraform:** Após receber o conteúdo gerado pela IA, o processo automatizado cria arquivos `.tf` estruturados e organizados no diretório específico (`deploy/terraform`). Cada arquivo é nomeado de forma única e incrementada para evitar conflitos, seguindo as melhores práticas de gerenciamento de configuração.
 
 Este diagrama exemplifica minha abordagem técnica avançada na automação de infraestrutura, combinando Python, inteligência artificial e práticas de DevOps para proporcionar configurações detalhadas e automatizadas em ambientes de nuvem complexos.
 
