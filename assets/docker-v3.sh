@@ -1,4 +1,3 @@
-```sh
 #!/bin/bash
 
 # Step 1: Check if docker is installed
