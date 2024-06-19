@@ -389,3 +389,25 @@ curl \
 
 
 ```
+
+## Disclaimer 🛑🤖
+
+### Propósito e Contexto ℹ️
+
+Este projeto, AI-Infra-Automation-Toolbox, utiliza inteligência artificial 🧠 para gerar automaticamente configurações de infraestrutura como código (IaC) com base em prompts fornecidos pelo usuário. O objetivo principal é educacional 📚 e demonstrativo 💡, oferecendo uma ferramenta para estudar automação de infraestrutura em ambientes de nuvem ☁️.
+
+### Instruções de Uso 📋
+
+- **Uso no Trabalho:** Embora este código possa ser utilizado em ambientes de trabalho para fins de aprendizado e prototipagem, recomenda-se fortemente que todas as configurações geradas sejam revisadas e validadas por profissionais qualificados antes de serem aplicadas em produção 🚧.
+  
+- **Revisão Humana Necessária:** Os resultados obtidos da IA e os arquivos `.tf` gerados devem sempre passar por uma revisão humana detalhada 👩‍💻👨‍💻. Isso inclui verificar a conformidade com as políticas de segurança 🔒, as melhores práticas de infraestrutura 💡, e as especificidades do ambiente de produção 🌐.
+
+- **Isenção de Responsabilidade:** A utilização deste código e dos artefatos gerados pela AI-Infra-Automation-Toolbox é por conta e risco próprios do usuário. Não nos responsabilizamos por quaisquer danos, perdas ou consequências resultantes do uso direto das configurações geradas sem uma revisão adequada 🚫.
+
+### Aviso de Não Utilização em Produção Direta ⚠️
+
+- **Aviso Crítico:** Nunca implemente diretamente em ambiente de produção as configurações geradas por esta aplicação sem uma revisão humana minuciosa e sem considerar todas as implicações de segurança, desempenho e conformidade 🚨.
+
+- **Propósito Educacional:** Este projeto destina-se principalmente a fornecer uma base educacional 📚 e prática 💼 para a automação de infraestrutura. Os usuários são encorajados a adaptar, ajustar e melhorar o código conforme suas necessidades específicas, mas sempre com a devida diligência e cautela 🛡️.
+
+Este disclaimer visa garantir que a AI-Infra-Automation-Toolbox seja utilizada de maneira responsável e segura, respeitando as melhores práticas e garantindo que todas as configurações geradas sejam devidamente revisadas antes de serem aplicadas em ambientes críticos 🔍.
