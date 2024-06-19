@@ -411,3 +411,19 @@ Este projeto, AI-Infra-Automation-Toolbox, utiliza inteligência artificial 🧠
 - **Propósito Educacional:** Este projeto destina-se principalmente a fornecer uma base educacional 📚 e prática 💼 para a automação de infraestrutura. Os usuários são encorajados a adaptar, ajustar e melhorar o código conforme suas necessidades específicas, mas sempre com a devida diligência e cautela 🛡️.
 
 Este disclaimer visa garantir que a AI-Infra-Automation-Toolbox seja utilizada de maneira responsável e segura, respeitando as melhores práticas e garantindo que todas as configurações geradas sejam devidamente revisadas antes de serem aplicadas em ambientes críticos 🔍.
+
+## Licença 📜
+
+Este projeto está licenciado sob os termos da Licença MIT. Consulte o arquivo [LICENSE](https://github.com/chaos4455/AI-Infra-Automation-Toolbox/blob/main/LICENSE) para obter mais detalhes. 📝
+
+### Isenção de Responsabilidade 🚧
+
+Este software é fornecido apenas para fins educacionais e de estudo. Não é recomendado o uso direto em produção sem revisão humana cuidadosa. Os resultados gerados pela IA ou qualquer artefato deste projeto devem ser considerados como base para ajustes e implementações específicas do ambiente. 🤖🧠
+
+### Propósito 🎯
+
+O propósito deste projeto é demonstrar a aplicação de automação de infraestrutura com inteligência artificial. Qualquer uso comercial deve ser feito após ajustes e revisões adequadas para garantir a segurança e adequação ao ambiente de produção. 🚀💼
+
+---
+
+© 2024 Elias Andrade. Todos os direitos reservados. 📅
