@@ -1,4 +1,3 @@
-```hcl
 resource "kubernetes_service" "apache-cluster" {
   name                      = "apache-cluster"
   namespace                 = "default"
