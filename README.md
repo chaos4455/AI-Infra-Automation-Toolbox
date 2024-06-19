@@ -14,6 +14,36 @@ Bem-vindo ao **AI-Infra-Automation-Toolbox**! Este repositório contém uma vast
 ![Gerando Arquivos Docker Compose](https://github.com/chaos4455/AI-Infra-Automation-Toolbox/raw/main/assets/py_gTEuFtNHKM.png)
 *Prompt interativo para especificar nome, características e descrição para geração de arquivos YAML do Docker Compose.*
 
+## Como Executar 🏃‍♂️🚀
+
+### Instalar Dependências:
+Para executar este projeto, você precisará instalar as seguintes dependências:
+- Python 3.10 ou superior
+- Biblioteca `os`
+- Biblioteca `requests`
+- Biblioteca `re`
+- Biblioteca `inquirer`
+
+### Como Instalar:
+Você pode instalar as bibliotecas Python necessárias usando o pip:
+```bash
+pip install os requests re inquirer
+```
+## Como Obter a Chave da API do Google Gemini 🔑
+
+Para obter a chave da API do Google Gemini, siga estas etapas:
+
+1. Acesse o site do Google AI Studio: [https://ai.google.dev/aistudio](https://ai.google.dev/aistudio).
+2. Faça login na sua conta do Google ou crie uma se você ainda não tiver uma.
+3. Navegue até a seção de Chave da API dentro do painel do AI Studio.
+4. Aceite os termos e condições do Google para usar a API.
+5. Gere sua chave da API.
+6. Copie a chave da API fornecida.
+7. Agora você pode usar esta chave da API em sua aplicação para acessar a API do Google Gemini.
+
+Lembre-se de manter sua chave da API segura e evitar compartilhá-la publicamente para evitar acesso não autorizado aos seus recursos de AI do Google.
+
+
 ---
 
 ## 📚 Visão Geral
