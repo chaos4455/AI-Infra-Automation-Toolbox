@@ -64,7 +64,6 @@ Este projeto utiliza uma variedade de tecnologias e ferramentas para garantir um
 
 **Construir a imagem Docker:**
 
-```sh
 docker build -t minha-imagem .
 
 
