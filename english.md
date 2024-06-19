@@ -13,24 +13,6 @@ Welcome to **AI-Infra-Automation-Toolbox**! This repository contains a vast coll
 ![Generating Docker Compose Files](https://github.com/chaos4455/AI-Infra-Automation-Toolbox/raw/main/assets/py_gTEuFtNHKM.png)
 *Interactive prompt for specifying name, characteristics, and description to generate Docker Compose YAML files.*
 
-
-## 📜 Index
-
-- [📚Overview](#-overview)
-- [🏗️ Repository Structure](#️-repository-structure)
-- [🚀 Technologies Used](#-technologies-used)
-- [🔧 Configuration and Use](#-configuration-and-use)
-- [🧰 Tools and Automation](#-tools-and-automation)
-- [📂 YAML File Details](#-yaml-file-details)
- - [🐳 Deploys Docker](#-deploys-docker)
- - [☸️ Simple Kubernetes Deploys](#-simple-kubernetes-deploys)
- - [🌐 Complex Kubernetes Deploys](#-complex-kubernetes-deploys)
-- [📊 Diagrams and References](#-diagrams-and-references)
-- [🌐 References and Resources](#-references-and-resources)
-- [👥 Contributions](#-contributions)
-- [📞 Support](#-support)
-- [📜 MIT License](#-mit-license)
-
 ---
 
 ## 📚 Overview
