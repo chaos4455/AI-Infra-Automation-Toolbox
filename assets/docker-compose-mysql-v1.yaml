@@ -1,4 +1,3 @@
-```yaml
 version: '3'
 
 services:
@@ -18,4 +17,3 @@ services:
 
 networks:
   mysql-net:
-```
