@@ -34,6 +34,42 @@ O **AI-Infra-Automation-Toolbox** foi criado para facilitar o provisionamento e 
 
 Tudo isso é gerado automaticamente através da API do Google Gemini, que recebe os inputs necessários e gera os arquivos de configuração de forma dinâmica e eficiente. 🧑‍💻✨
 
+### 🧑‍💼 Como Utilizar o AI-Infra-Automation-Toolbox para Empresas e Profissionais de Mercado
+
+O **AI-Infra-Automation-Toolbox** é uma solução robusta para automatizar e provisionar ambientes de infraestrutura complexos, especialmente voltada para empresas que buscam eficiência e escalabilidade em suas operações de TI. Desenvolvido com foco em profissionais de mercado, este repositório oferece:
+
+#### Como Usar:
+
+1. **Automatização de Infraestrutura**: Utilize os scripts Python para gerar automaticamente configurações YAML para Docker, Kubernetes e Google Cloud, agilizando o processo de provisionamento de ambientes.
+
+2. **Templates Pré-configurados**: Aproveite os templates YAML prontos para uso, otimizados para diferentes cenários de deploy e configurações avançadas como StatefulSets, Ingress e ConfigMaps.
+
+3. **Integração com Google Gemini API**: Interaja diretamente com a Google Gemini API para configurar dinamicamente seus ambientes de infraestrutura, garantindo uma automação eficiente e personalizada.
+
+#### Por que Usar:
+
+- **Eficiência Operacional**: Reduza o tempo gasto na configuração manual de infraestrutura com automações que simplificam e aceleram o processo.
+
+- **Escalabilidade Garantida**: Adapte rapidamente seus ambientes conforme necessidades de crescimento, utilizando ferramentas e práticas recomendadas.
+
+- **Segurança e Confiabilidade**: Implemente melhores práticas de segurança e mantenha a integridade dos seus sistemas com configurações consistentes e testadas.
+
+#### Benefícios para Empresas:
+
+- **Redução de Custos**: Minimize despesas operacionais ao automatizar tarefas repetitivas e simplificar o gerenciamento de recursos.
+
+- **Aumento da Produtividade**: Permita que sua equipe foque em iniciativas estratégicas ao invés de tarefas manuais e administrativas.
+
+- **Competitividade no Mercado**: Mantenha-se à frente da concorrência com uma infraestrutura ágil e flexível que suporta inovação contínua e entregas rápidas.
+
+#### Implementação Ideal:
+
+Utilize o AI-Infra-Automation-Toolbox para configurar desde ambientes de desenvolvimento até soluções de produção escaláveis, integrando-se perfeitamente às suas estratégias de negócio e metas de crescimento.
+
+---
+
+Se você busca otimizar suas operações de TI e escalar suas infraestruturas de forma eficiente, o AI-Infra-Automation-Toolbox é a escolha ideal. Explore nosso repositório para descobrir como podemos ajudar a transformar sua infraestrutura de TI.
+
 ---
 
 ## 🏗️ Estrutura do Repositório
@@ -170,62 +206,22 @@ Este projeto utiliza uma variedade de tecnologias e ferramentas para garantir um
 
 ## 🔧 Configuração e Uso
 
-### 🐳 Docker
+## 🤖 Obtendo Chave API do AI Studio
 
-**Construir a imagem Docker:**
+Para utilizar as APIs do AI Studio, siga os passos abaixo para obter sua chave API:
 
-docker build -t minha-imagem .
+1. Acesse o [AI Studio](https://aistudio.google.com/app/apikey) e faça login com sua conta Google, se necessário.
+
+2. Na página de gerenciamento de chaves API, clique em "Create a new API key" para gerar uma nova chave ou copie uma chave existente, se disponível.
+
+3. Após obter sua chave API, você pode testar a API utilizando curl. Substitua `YOUR_API_KEY` na URL abaixo pelo seu próprio:
 
 
-🧰 Ferramentas e Automação
-📄 Google Gemini API
-Os scripts de automação utilizam a Google Gemini API para gerar arquivos YAML e configurações necessárias para Docker, Kubernetes e Terraform. Os scripts Python presentes na pasta automation/ são responsáveis por essa integração.
+```bash
+curl \
+  -H 'Content-Type: application/json' \
+  -d '{"contents":[{"parts":[{"text":"Explain how AI works"}]}]}' \
+  -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=YOUR_API_KEY'
 
-generate_yaml.py: Gera arquivos YAML com base nos inputs fornecidos.
-google_gemini_api.py: Interage com a API do Google Gemini para gerar configurações dinâmicas.
-🐍 Scripts Python
-generate_yaml.py
-google_gemini_api.py
-🐚 Shell Scripts
-docker/scripts/setup.sh: Script para configuração inicial do Docker.
-kubernetes/scripts/setup.sh: Script para configuração inicial do Kubernetes.
-📂 Detalhes dos Arquivos YAML
-A seguir estão os detalhes dos arquivos YAML que serão incluídos neste repositório, categorizados por tipo e complexidade.
 
-🐳 Deploys Docker
-Os arquivos Docker incluem configurações básicas e avançadas para criação de containers e serviços.
-
-Dockerfile: Define a imagem Docker.
-docker-compose.yml: Configuração do docker-compose.
-setup.sh: Script de configuração inicial do Docker.
-☸️ Deploys Kubernetes Simples
-Configurações simples do Kubernetes, ideais para ambientes de desenvolvimento e testes rápidos.
-
-deployment.yaml: Configuração de deployment do Kubernetes.
-service.yaml: Configuração de serviço do Kubernetes.
-configmap.yaml: Configurações de ConfigMap.
-secret.yaml: Configurações de Secret.
-🌐 Deploys Kubernetes Complexos
-Configurações avançadas do Kubernetes, incluindo integrações complexas e setups de produção.
-
-statefulset.yaml: Configuração de StatefulSet para aplicações que necessitam de estado.
-ingress.yaml: Configuração de Ingress para controle de entrada de tráfego.
-persistentvolume.yaml: Configuração de Persistent Volume.
-persistentvolumeclaim.yaml: Configuração de Persistent Volume Claim.
-networkpolicy.yaml: Configuração de políticas de rede.
-cronjob.yaml: Configuração de CronJob para tarefas agendadas.
-📊 Diagramas e Referências
-Para facilitar o entendimento e visualização das configurações e fluxos de trabalho, incluiremos diagramas detalhados. Estes diagramas ajudarão a explicar a arquitetura dos deploys complexos e a integração entre diferentes componentes.
-
-Os diagramas estarão disponíveis na pasta diagrams/ e serão referenciados diretamente nos arquivos YAML e na documentação para maior clareza.
-
-🌐 Referências e Recursos
-Documentação do Docker
-Documentação do Kubernetes
-Documentação do Terraform
-Google Cloud
-Google Gemini API
-Outros recursos relevantes conforme necessário.
-👥 Contribuições
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests. Por favor, siga o código de conduta e as diretrizes de contribuição.
-
+```
