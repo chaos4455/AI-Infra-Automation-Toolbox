@@ -1,5 +1,7 @@
 # 🚀 AI-Infra-Automation-Toolbox 💡
 
+### 🌐 [English README](https://github.com/chaos4455/AI-Infra-Automation-Toolbox/blob/main/english.md) | Explore this portfólio and all another resources in English.
+
 Bem-vindo ao **AI-Infra-Automation-Toolbox**! Este repositório contém uma vasta coleção de exemplos de scripts, templates e ferramentas para provisionamento de ambientes Docker, Kubernetes e Google Cloud, além de configurações de zona de aterrissagem (landzone setup) e outras automações. 📦🔧
 
 ---
@@ -21,7 +23,6 @@ Bem-vindo ao **AI-Infra-Automation-Toolbox**! Este repositório contém uma vast
 - [📞 Suporte](#-suporte)
 - [📜 Licença MIT](#-licença-mit)
 
-### 🌐 [English README](https://github.com/chaos4455/AI-Infra-Automation-Toolbox/blob/main/english.md) | Explore this portfólio and all another resources in English.
 
 ---
 
